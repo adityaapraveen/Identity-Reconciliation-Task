@@ -3,8 +3,14 @@
 A web service that identifies and tracks customer identity across multiple purchases by linking contacts with common email or phone numbers.
 
 ## Live Endpoint
+Endpoint to POST requests:
 ```
 https://identity-reconciliation-task-mba2.onrender.com/identify
+```
+
+To check the health of the server:
+```
+https://identity-reconciliation-task-mba2.onrender.com/health
 ```
 # NOTE - Hosted on Render so it might take 1-2 mins to spin up on first request (might setup a cron job to avoid this)
 
