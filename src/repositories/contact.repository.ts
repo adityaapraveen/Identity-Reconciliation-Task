@@ -41,7 +41,7 @@ export class ContactRepository {
             `
                 SELECT * FROM CONTACT 
                 WHERE (id = ? OR linkedId = ?)
-                AND deltedAt IS NULL
+                AND deletedAt IS NULL
                 ORDER BY createdAt ASC
             `, [primaryId, primaryId]
         )
@@ -53,15 +53,15 @@ export class ContactRepository {
         email: string | null
         phoneNumber: string | null
         linkedId: number | null
-        linkedPrecedence: 'primary' | 'secondary'
+        linkPrecedence: 'primary' | 'secondary'
     }): Promise<Contact> {
         const db = await getDb()
 
         const result = await db.run(
             `
-                INSERT INTO Contact (email, phoneNumber, linkedId, linkedPrecedence, createdAt, updatedAt)
+                INSERT INTO Contact (email, phoneNumber, linkedId, linkPrecedence, createdAt, updatedAt)
                 VALUES (?, ?, ?, ?, datetime('now'), datetime('now'))
-            `, [data.email, data.phoneNumber, data.linkedId, data.linkedPrecedence]
+            `, [data.email, data.phoneNumber, data.linkedId, data.linkPrecedence]
         )
         const created = await db.get<Contact>(
             `SELECT * FROM Contact WHERE id = ?`,

@@ -19,7 +19,7 @@ export class ContactService {
                 email: email ?? null,
                 phoneNumber: phoneNumber ?? null,
                 linkedId: null,
-                linkedPrecedence: 'primary'
+                linkPrecedence: 'primary'
             })
             return this.buildResponse([newContact])
         }
@@ -75,7 +75,7 @@ export class ContactService {
                 email: email ?? null,
                 phoneNumber: phoneNumber ? String(phoneNumber) : null,
                 linkedId: truePrimary.id,
-                linkedPrecedence: 'secondary'
+                linkPrecedence: 'secondary'
             })
             const updatedCluster = await this.repo.findClusterByPrimaryId(truePrimary.id)
             return this.buildResponse(updatedCluster)
